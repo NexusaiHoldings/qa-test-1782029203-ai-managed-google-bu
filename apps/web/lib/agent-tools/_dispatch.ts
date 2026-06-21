@@ -24,6 +24,9 @@
  */
 
 import type { HandlerContext, HandlerResult } from "@nexus/identity-and-access";
+import { handlePublishGbpPost } from "./publish_gbp_post";
+import { handlePostReviewResponse } from "./post_review_response";
+import { handleFetchKeywordRankings } from "./fetch_keyword_rankings";
 
 type Args = Record<string, unknown>;
 
@@ -32,4 +35,7 @@ export const DOMAIN_DISPATCH: Record<
   (ctx: HandlerContext, args: Args) => Promise<HandlerResult>
 > = {
   // Build agent appends entries here per CTO-declared new_domain_tool.
+  publish_gbp_post: (ctx, a) => handlePublishGbpPost(ctx, a),
+  post_review_response: (ctx, a) => handlePostReviewResponse(ctx, a),
+  fetch_keyword_rankings: (ctx, a) => handleFetchKeywordRankings(ctx, a),
 };
