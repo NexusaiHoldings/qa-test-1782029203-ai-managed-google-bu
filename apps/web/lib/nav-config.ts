@@ -5,7 +5,7 @@ export type NavLink = {
 };
 
 export type NavGroup = {
-  title: string;
+  label: string;
   links: NavLink[];
 };
 
@@ -25,7 +25,7 @@ export const NAV_CONFIG: NavConfig = {
   ],
   groups: [
     {
-      title: "Automation",
+      label: "Automation",
       links: [
         { href: "/connect", label: "GBP Connection" },
         { href: "/posts", label: "Post Queue" },
@@ -33,7 +33,7 @@ export const NAV_CONFIG: NavConfig = {
       ],
     },
     {
-      title: "Insights",
+      label: "Insights",
       links: [
         { href: "/dashboard", label: "Activity Dashboard" },
         { href: "/rankings", label: "Keyword Rankings Report" },
