@@ -1,23 +1,43 @@
-export const NAV_CONFIG = {
+export type NavLink = {
+  href: string;
+  label: string;
+  exact?: boolean;
+};
+
+export type NavGroup = {
+  title: string;
+  links: NavLink[];
+};
+
+export type NavConfig = {
+  primary: NavLink[];
+  groups: NavGroup[];
+};
+
+export const NAV_CONFIG: NavConfig = {
   primary: [
-    { label: "Dashboard", href: "/dashboard" },
-    { label: "Connect", href: "/connect" },
-    { label: "Posts", href: "/posts" },
-    { label: "Reviews", href: "/reviews" },
-    { label: "Rankings", href: "/rankings" },
+    { href: "/", label: "Home", exact: true },
+    { href: "/dashboard", label: "Dashboard" },
+    { href: "/connect", label: "GBP Connection" },
+    { href: "/posts", label: "Post Queue" },
+    { href: "/reviews", label: "Review Responses" },
+    { href: "/rankings", label: "Keyword Rankings" },
   ],
   groups: [
     {
-      label: "Google Business Profile",
-      items: [
-        { label: "Connect", href: "/connect" },
-        { label: "Post Queue", href: "/posts" },
-        { label: "Review Queue", href: "/reviews" },
+      title: "Automation",
+      links: [
+        { href: "/connect", label: "GBP Connection" },
+        { href: "/posts", label: "Post Queue" },
+        { href: "/reviews", label: "Review Response Queue" },
       ],
     },
     {
-      label: "Reports",
-      items: [{ label: "Keyword Rankings", href: "/rankings" }],
+      title: "Insights",
+      links: [
+        { href: "/dashboard", label: "Activity Dashboard" },
+        { href: "/rankings", label: "Keyword Rankings Report" },
+      ],
     },
   ],
 };
