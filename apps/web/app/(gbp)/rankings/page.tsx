@@ -8,7 +8,7 @@
  */
 
 import type { JSX } from "react";
-import { getServerSession } from "@nexus/identity-and-access";
+import { getSessionUser } from "@/lib/admin-auth";
 import { getMonthlyReport } from "@/lib/gbp/rank-tracker";
 import type { KeywordRankDelta, CompetitorEntry } from "@/lib/gbp/rank-tracker";
 
@@ -69,9 +69,8 @@ export default async function RankingsPage({
   searchParams,
 }: PageProps): Promise<JSX.Element> {
   const params = await searchParams;
-  const session = await getServerSession();
-  const businessId =
-    params.business_id ?? (session?.user?.id as string | undefined) ?? "";
+  const user = await getSessionUser();
+  const businessId = params.business_id ?? user?.id ?? "";
   const month = params.month ?? currentMonth();
 
   const report = businessId
